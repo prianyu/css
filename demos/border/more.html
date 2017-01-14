@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>更多关于border的例子</title>
+	<style>
+		p {
+			line-height: 1.5em;
+			text-align: center;
+		}
+		.parent {
+			display:inline-block;
+			vertical-align:bottom;
+			margin:0 0 30px 30px;
+			text-align:center;
+		}
+		.triangle {
+			width:0;
+			height:0;
+		}
+		.triangle1 {
+			border-top:50px solid transparent;
+			border-bottom:100px solid #249ff1;
+			border-left: 30px solid transparent;
+			border-right: 100px solid transparent;
+		}
+		.triangle2 {
+			border-top: 80px solid transparent;
+			border-bottom: 80px solid #ff5b01;
+			border-left: 50px solid #ff5b01;
+			border-right:50px solid transparent;
+		}
+		.triangle3 {
+			border-top:30px solid transparent;
+			border-bottom:30px solid #de1be5;
+			border-left: 80px solid transparent;
+			border-right:80px solid transparent;
+		}
+		.trapezoid {
+			width:0;
+			height:0;
+			border-top:none;
+			border-right:80px solid transparent;
+			border-bottom:60px solid #13dbed;
+			border-left: 80px solid #13dbed;
+		}
+		.polygon {
+			width:0;
+			height:0;
+		}
+		.polygon1 {
+			border-top:40px solid transparent;
+			border-bottom:60px solid #eaed13;
+			border-left: 80px solid #eaed13;
+			border-right:40px solid transparent;
+		}
+		.polygon2 {
+			border-top:80px solid transparent;
+			border-bottom:40px solid #eaed13;
+			border-left: 30px solid #eaed13;
+			border-right:90px solid transparent;
+		}
+		.parallelgoram {
+			position:relative;
+			width:80px;
+			height:80px;
+			background:red;
+		}
+		.parallelgoram:before{
+			position:absolute;
+			left:0;top:0;
+			content: '';
+			border-top:40px solid red;
+			border-bottom:40px solid transparent;
+			border-right: 20px solid red;
+			border-left: 20px solid transparent;
+			margin-left:-40px;
+		}
+		.parallelgoram:after{
+			position:absolute;
+			top:0;right:-40px;
+			content: '';
+			border-top:40px solid transparent;
+			border-bottom:40px solid red;
+			border-right: 20px solid transparent;
+			border-left: 20px solid red;
+		}
+		.sixangle {
+			position:relative;
+			width:60px;
+			height:0;
+			border-top:none;
+			border-bottom:52px solid green;
+			border-left: 30px solid transparent;
+			border-right:30px solid transparent;
+		}
+		.sixangle:after{
+			position:absolute;
+			top:51px;left:-30px;
+			content:'';
+			width:60px;
+			height:0;
+			border-top:52px solid green;
+			border-bottom:none;
+			border-left: 30px solid transparent;
+			border-right:30px solid transparent;
+		}
+</style>
+	</style>
+</head>
+<body>
+	<div id="more">
+		<div class="parent">
+			<div class="triangle triangle1"></div>
+			<p>锐角三角形</p>
+		</div>
+		<div class="parent">
+			<div class="triangle triangle2"></div>
+			<p>直角三角形</p>
+		</div>
+		<div class="parent">
+			<div  class="triangle triangle3"></div>
+			<p>钝角三角形</p>
+		</div>
+		<div class="parent">
+			<div class="trapezoid"></div>
+			<p>直角梯形</p>
+		</div>
+		<div class="parent">
+			<div class="polygon polygon1"></div>
+			<p>凸多边梯形</p>
+		</div>
+		<div class="parent">
+			<div class="polygon polygon2"></div>
+			<p>凹多边梯形</p>
+		</div>
+		<div class="parent">
+			<div class="parallelgoram"></div>
+			<p>平行四边形</p>
+		</div>
+		<div class="parent" style="top: -49px;margin-left: 50px;position: relative;">
+			<div class="sixangle"></div>
+			<p style="position:relative;top:50px">正六边形</p>
+		</div>
+	</div>
+</body>
+</html>

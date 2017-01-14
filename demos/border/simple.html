@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>关于border的特点分析</title>
+	<style>
+		div {margin: 30px auto;}
+		.border {
+		 	width: 200px;
+		 	height: 100px;
+		 	border-top: 40px solid red;
+		 	border-bottom: 40px solid green;
+		 	border-left: 40px solid yellow;
+		 	border-right: 40px solid blue;
+		 }
+		.height0 {
+		 	height: 0;
+		 }
+		.width0 {
+		 	width: 0;
+		 }
+		.trapezoid {
+		 	width: 200px;
+		 	height: 0;
+		 	border-top: none;
+		 	border-bottom: 60px solid #249ff1;
+		 	border-left: 40px solid transparent;
+		 	border-right: 40px solid transparent;
+		 }
+		.triangle {
+		 	width:0;
+		 	height:0;
+		 	border-top:0 solid transparent;
+		 	border-bottom:100px solid #249ff1;
+		 	border-left: 100px solid transparent;
+		 	border-right: 100px solid transparent;
+		 }
+	</style>
+</head>
+<body>
+	<div class="border"></div>
+	<div class="border height0"></div>
+	<div class="border height0 width0"></div>
+	<div class="trapezoid"></div>
+	<div class="triangle"></div>
+</body>
+</html>

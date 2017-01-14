@@ -15,7 +15,7 @@ border属性是在实际的应用中使用频率比较高的一个属性。利�
 首先我们定义一个div，样式如下   
 
 ```css
- div {
+ .border {
  	width: 200px;   
  	height:100px;   
  	margin:0 auto;   
@@ -27,39 +27,41 @@ border属性是在实际的应用中使用频率比较高的一个属性。利�
 ```
 
 浏览器渲染后效果如下：   
-<div style="width: 200px;height:100px;border-top:40px solid red;border-bottom:40px solid green;border-left: 40px solid yellow;border-right: 40px solid blue;margin:0 auto;"></div>
+
+![border](./images/border.png)
 
 我们发现，通过定义给div的四个边框定义不同的颜色，我们发现其渲染后的表现形式为四个梯形组成的边框。
 如果我们把高度定义为0，那么渲染后如下：   
-<div style="width: 200px;height:0;border-top:40px solid red;border-bottom:40px solid green;border-left: 40px solid yellow;border-right: 40px solid blue;margin:0 auto;"></div>
+
+![height0](./images/height0.png)
 
 如果我们再把宽度定义为0，结果如下：
-<div style="width: 0;height:0;border-top:40px solid red;border-bottom:40px solid green;border-left: 40px solid yellow;border-right: 40px solid blue;margin:0 auto;"></div>
+
+![width0](./images/width0.png)
 
 通过对比以上定义的不同的样式，我们发现，在CSS中，边框的表现实际上以梯形的形式来渲染的（这可能与`groove`等3D效果的属性值有关）。当元素的宽高为0时就会变成挤在一起的四个三角形。因此，我们可以想到，如果把其中的三个边框的颜色定义为透明色`transparent`,。然后通过包裹在一个外层容器上，并给外层容器设置overflow:hidden，那么我们将得到一个等腰梯形或者三角形。现在我们把css修改为以下内容。 
   
 
 ```css
- div {
+ .trapezoid {
  	width: 200px;   
- 	height:0;   
- 	margin:0 auto;   
- 	border-top:40px solid transparent;   
- 	border-bottom:40px solid #249ff1;   
+ 	height:0;      
+ 	border-top:none;   
+ 	border-bottom:60px solid #249ff1;   
  	border-left: 40px solid transparent;   
  	border-right: 40px solid transparen;   
  }
 ```
 我们将得到以下梯形：
-<div style="width: 200px;height:0;border-top:40px solid transparent;border-bottom:40px solid #249ff1;border-left: 40px solid transparent;border-right: 40px solid transparent;margin:0 auto;"></div>
+
+![](./images/trapezoid.png)
 
 将样式设置为如下：
 
 ```css
- div {
+ .triangle {
  	width:0;
  	height:0;
- 	margin:0 auto; 
  	border-top:0 solid transparent;
  	border-bottom:100px solid #249ff1;
  	border-left: 100px solid transparent;
@@ -68,49 +70,11 @@ border属性是在实际的应用中使用频率比较高的一个属性。利�
 ```
 我们将得到以下三角形：
 
-<div style="width:0;height:0;border-top:0 solid transparent;border-bottom:100px solid #249ff1;border-left: 100px solid transparent;border-right: 100px solid transparent;margin:0 auto;"></div>
+![](./images/triangle.png)
 
-有了这种表现形式的基础，我们可以通过设置不同边框宽度值、颜色以及借住伪元素或者多个元素的拼接可以实现更为复杂的一些图形，比如多角星，菱形，多边形以及我们常见的聊天气泡等。如下为其中几个例子(你可以通过审查元素查看每个图形的样式)。
+有了这种表现形式的基础，我们可以通过设置不同边框宽度值、颜色以及借住伪元素或者多个元素的拼接可以实现更为复杂的一些图形，比如多角星，菱形，多边形以及我们常见的聊天气泡等。如下为其中几个例子[你可以点击此处查看源代码](./demos/border/more.html)。
 
-<div class="parent"  style="display:inline-block;vertical-align:bottom;margin:0 0 30px 30px;text-align:center;">
-	<div style="width:0;height:0;border-top:50px solid transparent;border-bottom:100px solid #249ff1;border-left: 30px solid transparent;border-right: 100px solid transparent;display:inline-block;vertical-align:bottom;"></div>
-	<div>锐角三角形</div>
-</div>
-<div class="parent"  style="display:inline-block;vertical-align:bottom;margin:0 0 30px 30px;text-align:center;">
-	<div style="width:0;height:0;border-top:80px solid transparent;border-bottom:80px solid #ff5b01;border-left: 50px solid #ff5b01;border-right:50px solid transparent;"></div>
-	<div>直角三角形</div>
-</div>
-<div class="parent"  style="display:inline-block;vertical-align:bottom;margin:0 0 30px 30px;text-align:center;">
-	<div style="width:0;height:0;border-top:30px solid transparent;border-bottom:30px solid #de1be5;border-left: 80px solid transparent;border-right:80px solid transparent;"></div>
-	<div>钝角三角形</div>
-</div>
-<div class="parent"  style="display:inline-block;vertical-align:bottom;margin:0 0 30px 30px;text-align:center;">
-	<div style="width:0;height:0;border-top:none;border-bottom:60px solid #13dbed;border-left: 80px solid #13dbed;border-right:80px solid transparent;"></div>
-	<div>直角梯形</div>
-</div>
-<div class="parent"  style="display:inline-block;vertical-align:bottom;margin:0 0 30px 30px;text-align:center;">
-	<div style="width:0;height:0;border-top:40px solid transparent;border-bottom:60px solid #eaed13;border-left: 80px solid #eaed13;border-right:40px solid transparent;"></div>
-	<div>凸多边梯形</div>
-</div>
-<div class="parent"  style="display:inline-block;vertical-align:bottom;margin:0 0 30px 30px;text-align:center;">
-	<div style="width:0;height:0;border-top:80px solid transparent;border-bottom:40px solid #eaed13;border-left: 30px solid #eaed13;border-right:90px solid transparent;"></div>
-	<div>凹多边梯形</div>
-</div>
-<style>
-.diamond:before{position:absolute;content: '';border-top:40px solid red;border-bottom:40px solid transparent;border-right: 20px solid red;border-left: 20px solid transparent;margin-left:-40px;left:0;top:0}
-.diamond:after{position:absolute;content: '';border-top:40px solid transparent;border-bottom:40px solid red;border-right: 20px solid transparent;border-left: 20px solid red;right:-40px;top:0;}
-.sixangle:after{content:'';width:60px;height:0;border-top:52px solid green;border-bottom:none;border-left: 30px solid transparent;border-right:30px solid transparent;position:absolute;top:51px;left:-30px;}
-</style>
-
-<div class="parent"  style="display:inline-block;vertical-align:bottom;margin:0 0 30px 30px;text-align:center;">
-	<div style="width:80px;height:80px;background:red;position:relative;" class="diamond"></div>
-	<div>平行四边形</div>
-</div>
-
-<div class="parent"  style="display:inline-block;vertical-align:bottom;margin:0 0 30px 60px;text-align:center;height:120px;top: -6px;position:relative;">
-	<div style="width:60px;height:0;border-top:none;border-bottom:52px solid green;border-left: 30px solid transparent;border-right:30px solid transparent;position:relative;" class="sixangle"></div>
-	<div style="position:relative;top:50px">正六边形</div>
-</div>
+![more](./images/more.png)
 
 
 

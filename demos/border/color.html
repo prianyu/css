@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>利用border-color</title>
+	<style>
+		a {
+			position: relative;
+			display: inline-block;
+			padding: 30px 20px;
+			color: #a7a7a7;
+			border: 1px solid;
+		}
+		a:hover {
+			color: #249ff1;
+		}
+		a:before,a:after {
+			content: '';
+			display: block;
+		}
+		a:after {
+			border-top: 2px solid;
+			width: 20px;
+		}
+		a:before {
+			position: absolute;
+			top:  20px;
+			left:  29px;
+			border-left: 2px solid;
+			height: 20px;
+		}
+	</style>
+</head>
+<body>
+	<a href=""></a>
+</body>
+</html>

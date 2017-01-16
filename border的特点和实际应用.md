@@ -156,44 +156,100 @@ border属性是在实际的应用中使用频率比较高的一个属性。利�
 	> 利用这种方法，我们同样也可以实现背景的定位，比如为图片添加水印时水印的右下角和左上角等定位。
 	
 4. border-color使用技巧
-	
+
+ 	
 	由于在border不指定颜色时其颜色值等于标签的字体颜色值，我们可以利用此特点做一些效果。比如：具有边框的a标签，正常状态下边框和字体颜色为灰色，鼠标经过时为蓝色，如下：
 	
 	![](./images/border_color.png)
 	
 	一般情况下，我们会用伪元素来写里面的加号，当鼠标经过时要同时改变边框色值，字体色值和伪元素的背景色值，但是利用这属性，我们只需要改变a标签的字体色值。代码如下。
+		
+	```css
+	a {
+		position: relative;
+		display: inline-block;
+		padding: 30px 20px;
+		color: #a7a7a7;
+		border: 1px solid;
+	}
+	a:hover {
+		color: #249ff1;
+	}
+	a:before,a:after {
+		content: '';
+		display: block;
+	}
+	a:after {
+		border-top: 2px solid;
+		width: 20px;
+	}
+	a:before {
+		position: absolute;
+		top:  20px;
+		left:  29px;
+		border-left: 2px solid;
+		height: 20px;
+	}
+	```
 	
-```css
-a {
-	position: relative;
-	display: inline-block;
-	padding: 30px 20px;
-	color: #a7a7a7;
-	border: 1px solid;
-}
-a:hover {
-	color: #249ff1;
-}
-a:before,a:after {
-	content: '';
-	display: block;
-}
-a:after {
-	border-top: 2px solid;
-	width: 20px;
-}
-a:before {
-	position: absolute;
-	top:  20px;
-	left:  29px;
-	border-left: 2px solid;
-	height: 20px;
-}
-```
+5.  自适应三角形
 
-**以上为border属性的一些特点和实际应用，后期将会继续更新更多的特点和使用场景。暂且先写这些。**
-
+	有时候我们会有做自适应三角形效果的需求，比如下图。这是一个注册页面，设计需求为：在注册页面顶部的两个身份的选择为两个灰色背景的矩形，宽度自适应。当选中其中一个身份时变为蓝色背景的五边形。
 	
+	![](./images/responsive_triangle3.png)
+	
+	我们对设计进行拆分，很自然的是把激活状态下的形状拆分为顶部的矩形和底部的等腰三角形。这样可以借助伪元素以及边框画三角形的方法进行CSS样式的定义。但问题来了，因为两个标签的宽度是自适应的，那么边框宽度的值也需要自适应，然而边框的宽度值是不支持百分比的。？？怎么办？这时我们第一个想到的方法自然会是用js动态计算，但是不是不借助js动态计算就没有办法了呢？我们可以画个图进行分析。
+	
+	![](./images/responsive_triangle1.png)
+	
+	当我们要让三角形随着矩形自适应时，在父级标签（蓝色部分）下，其理想状态应该为图中交叉部分(上边框+透明的左右边框)。由于不支持百分比，我们姑且给边框宽度都给一个很大的值，通过定位后，就成了图中红色三角形的部分。溢出的部分，我们在父级进行overflow:hidden即可，这样一个自适应的三角形就实现了。我们假设父级的宽度为a,高度为b,三角形的border-top为y，border-left和border-right为x。在未进行定位之前，A点应该与B点重合，通过定位后，A点与B点相对位置为(-(x-0.5a） , -(y-b)）。此时我们又遇到一个问题，就是x和y为一个固定的大值，a和b为一个百分比值，那么css就要进行计算，用css的calc属性可以解决，但是可能会有兼容性问题。我们通过思考，换个角度，如果能够让A点相对于C和D的中点定位，那相对位置就变为(-x,-y)，问题就好办了。我们把图片做一下改变，如下图：
+	
+	![](./images/responsive_triangle2.png)
+	
+	如果我们把父级的高度设置为0,利用padding-top来撑开高度，把宽度设置为0.5a，利用padding-left来撑开另外的0.5a，那么A点就相对于P点定位了。此时，A相对于P的位置为(-x,-y)。那么通过以下样式即可实现一个响应式三角形。**(注意border-left和border-top的比例，根据相似三角形即可)**
+	
+	html:   
+	
+	```html
+	<div></div>
+	```
+
+	css:
+	
+	```css
+	div {
+	    width: 40%;
+	    padding-top: 8%;
+	    padding-left: 40%;/*宽高比为10:1*/
+	    overflow: hidden;
+	    border: 1px solid red;/*为方便观察显示*/
+	}
+	div:after {
+		content:  '';
+		display: block;
+		width: 0;
+		height: 0;
+		border-top: 300px solid #249ff1;/*宽高比为10:1，即（1500+1500）: 300*/
+		border-left: 1500px solid transparent;
+		border-right: 1500px solid transparent;
+		margin-top: -300px;
+		margin-left: -1500px;
+	}
+	```
+	 效果如下：
+	 
+	 ![](./images/responsive_triangle4.png)
+	 
+	 有了这个方法，就可以实现上面的注册页的设计。同时通过调整各个参数，一样可以实现各种类型的三角形。设要定义的等腰三角形底为2x,高为y，父级需要的宽为2a,高为b。那么各个值满足的关系如下：
+	 
+	 ```
+	 border-left = border-right = x = -margin-left;
+	 border-top / padding-top = x / a;
+	 margin-top = -border-top;
+	 至于border-left的取值则根据实际需要设置一个大值即可，而border-top与三角形的形状有关，即与a和b比例有关。
+	 ```
+	 
+	**以上为border属性的一些特点和实际应用，后期将会继续更新更多的特点和使用场景。暂且先写这些。**
 	
 	
 	 

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>响应式三角形</title>
+	<style>
+
+		div {
+		    width: 40%;
+		    padding-top: 8%;
+		    padding-left: 40%;
+		    overflow: hidden;
+		    border: 1px solid red;
+		}
+		div:after {
+			content:  '';
+			display: block;
+			width: 0;
+			height: 0;
+			border-top: 300px solid #249ff1;
+			border-left: 1500px solid transparent;
+			border-right: 1500px solid transparent;
+			margin-top: -300px;
+			margin-left: -1500px;
+		}
+
+	</style>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

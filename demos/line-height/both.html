@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vetical-align与line-height的关系</title>
+	<style>
+		img {
+			width:  100px;
+		}
+		.wrap {
+			background: #249ff1;
+			margin: 10px;
+		}
+		.span1 {
+			display: inline-block;
+			width:  100px;
+			height:  100px;
+			border:  1px solid red;
+			vertical-align: top;
+		}
+		.middle {
+			vertical-align:  middle;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<img src="../../images/zhuyin.png" alt="" style="">
+	</div>
+	<div class="wrap">
+		<span class="span1">我有内容</span>
+		<span class="span1"></span>
+	</div>
+	<div class="wrap" style="height:200px;line-height:200px;font-size:0;">
+		<img src="../../images/zhuyin.png" class="middle">
+	</div>
+</body>
+</html>

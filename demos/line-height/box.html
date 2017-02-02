@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>boxes</title>
+	<style>
+		.div0 {
+			padding: 20px;
+			background: #f0f0f0;
+			line-height: 2em;
+			font-size:  30px;
+		}
+		span {
+			background: #249ff1;
+		}
+		em {
+			background: #ff5b01;
+		}
+		.div {
+			background: #f0f0f0;
+			border:  1px solid #e0e0e0;
+			margin: 20px;
+		}
+		.div1 {
+			font-size: 16px;
+			line-height: 0;
+		}
+		.div2 {
+			font-size: 0;
+			line-height: 100px;
+		}
+		.div3{
+			font-size: 16px;
+			line-height: 100px;
+		}
+		.parent {
+			background: #f0f0f0;
+			font-size: 16px;
+			line-height: 150%;
+			padding:  20px;
+			margin: 20px;
+		}
+		.child {
+			border:  1px solid #249ff1;
+			margin: 20px 0;
+			font-size: 40px;
+		}
+		.parent1 {line-height: 150%;}
+		.parent2 {line-height: 1.5;}
+		.parent3 {line-height: 1.5em;}
+
+	</style>
+</head>
+<body>
+	<div class="div0">
+		这里是一个div，里面包含了独立的文字，<span>span标签</span><em>em标签</em>，以及其他的一些文字。
+	</div>
+	<div class="div div1">我是一行文字大小为16px,但是line-height为0的文字</div>
+	<div class="div div2">我是一行文字大小为0,但是line-height为100px的文字</div>
+	<div class="div div3">我是一行文字大小16px和line-height为100px的文字</div>
+	<div class="parent parent1">
+		我是父级元素，我的font-size为16px，line-height为150%
+		<div class="child child1">我是子级元素，我的font-size为40px，继承line-height为150%我是子级元素，我的font-size为40px，继承line-height为150%我是子级元素，我的font-size为40px，继承line-height为150%我是子级元素，我的font-size为40px，继承line-height为150%我是子级元素，我的font-size为40px，</div>
+	</div>
+	<div class="parent parent2">
+		我是父级元素，我的font-size为16px，line-height为1.5
+		<div class="child child2">我是子级元素，我的font-size为40px，继承line-height为1.5我是子级元素，我的font-size为40px，继承line-height为1.5我是子级元素，我的font-size为40px，继承line-height为1.5</div>
+	</div>
+	<div class="parent parent3">
+		我是父级元素，我的font-size为16px，line-height为1.5em
+		<div class="child child3">我是子级元素，我的font-size为40像素，继承line-height为1.5em我是子级元素，我的font-size为40像素，继承line-height为1.5em</div>
+	</div>
+</body>
+</html>

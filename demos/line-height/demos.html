@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vetical-align与line-height的应用</title>
+	<style>
+	*{padding:0; margin:0;}
+		img {
+			width:  100px;
+		}
+		.wrap {
+			background: #249ff1;
+			margin: 10px;
+		}
+		.wrap1 {
+			line-height: 200px;
+			text-align: center;
+		}
+		.middle {
+			vertical-align:  middle;
+		}
+		li{
+			list-style-type: none;
+			border:  1px solid red;
+			display: inline-block;
+			width: 28%;
+			text-align: center;
+			line-height: 0;
+		}
+		.fix {
+			display: inline-block;
+			width: 28%;
+			/* border: 1px solid green;   */
+			text-align: center;
+			vertical-align: top;
+		}
+		ul {
+			width:  720px;
+			border:  1px solid #a7a7a7;
+			text-align: justify;
+			margin: 20px auto;
+			line-height: 0;
+		}
+		li img {
+			width: 95%;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap wrap1">
+		<img src="../../images/zhuyin.png" class="middle">
+	</div>
+	<div class="wrap" style="height:200px">
+		<img src="../../images/zhuyin.png" alt="" class="middle">
+		<span style="display:inline-block;height:100%;vertical-align:middle;font-size:0">&nbsp;</span>
+	</div>
+	<ul>
+		<li>
+			<img src="../../images/zhuyin.png" alt="">
+		</li>
+		<li>
+			<img src="../../images/zhuyin.png" alt="">
+		</li>
+		<li>
+			<img src="../../images/zhuyin.png" alt="">
+		</li>
+
+		<li>
+			<img src="../../images/zhuyin.png" alt="">
+		</li>
+		<li>
+			<img src="../../images/zhuyin.png" alt="">
+		</li>
+		<li>
+			<img src="../../images/zhuyin.png" alt="">
+		</li>
+		<li>
+			<img src="../../images/zhuyin.png" alt="">
+			<p></p>
+		</li>
+		<span class="fix"></span>
+		<span class="fix"></span>
+		<span class="fix"></span>
+	</ul>
+</body>
+</html>

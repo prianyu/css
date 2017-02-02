@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>vertical-align各个值的表现形式</title>
+	<style>
+		.wrap {
+			width: 350px;
+			background: #f0f0f0;
+			border: 1px solid #e0e0e0;
+			display: inline-block;
+			margin-left: 10px;
+			margin-bottom: 10px;
+			vertical-align: top;
+			line-height: 50px;
+		}
+		img {
+			width: 100px;
+		}
+		span {
+			background: #F00;
+		}
+		.top{
+			vertical-align: top;
+		}
+		.middle {
+			vertical-align: middle;
+		}
+		.bottom {
+			vertical-align: bottom;
+		}
+		.text-top {
+			vertical-align: text-top;
+		}
+		.text-bottom {
+			vertical-align: text-bottom;
+		}
+		.super {
+			vertical-align: super;
+		}
+		.sub {
+			vertical-align: sub;
+		}
+		.l10 {
+			vertical-align: 10px;
+		}
+		.l-10 {
+			vertical-align: -10px;
+		}
+		.b-10 {
+			vertical-align: 10%;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<img src="../../images/zhuyin.png">
+		<span>我是默认对齐，也是baseline</span>
+	</div>
+	<div class="wrap">
+		<img src="../../images/zhuyin.png" class="top">
+		<span>我的对齐方式是top</span>
+	</div>
+	<div class="wrap">
+		<img src="../../images/zhuyin.png" class="middle">
+		<span>我的对齐方式是middle</span>
+	</div>
+	<div class="wrap">
+		<img src="../../images/zhuyin.png" class="bottom">
+		<span>我的对齐方式bottom</span>
+	</div>
+	<div class="wrap">
+		<img src="../../images/zhuyin.png" class="text-top">
+		<span>我的对齐方式text-top</span>
+	</div>
+	<div class="wrap">
+		<img src="../../images/zhuyin.png" class="text-bottom">
+		<span>我的对齐方式text-bottom</span>
+	</div>
+	<div class="wrap">
+		<img src="../../images/zhuyin.png" class="l10">
+		<span>我的对齐方式10px</span>
+	</div>
+	<div class="wrap">
+		<img src="../../images/zhuyin.png" class="l-10">
+		<span>我的对齐方式-10px</span>
+	</div>
+	<div class="wrap">
+		<img src="../../images/zhuyin.png" class="b-10">
+		<span>我对齐方式10%,即5px;</span>
+	</div>
+	<div class="wrap">
+		<span>这里是普通文字</span>
+		<span class="super">super</span>
+	</div>
+	<div class="wrap">
+		<span>这里是普通文字</span>
+		<span class="sub">sub</span>
+	</div>
+</body>
+</html>

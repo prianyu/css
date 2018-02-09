@@ -6,6 +6,6 @@ CSS入门简单，没有CSS基础的人花上一天的时间也能够简单的�
 
 文章将包含以下所有的章节：
 
-[1. border属性的特点以及实际的应用](./border属性的特点和实际的应用.md)
+[1. border属性的特点以及实际的应用](./border属性的特点和实际应用.md)
 
 [2. line-height与vertical-align疑难杂症](./深入探讨line-height与vertical-align的疑难杂症.md)
